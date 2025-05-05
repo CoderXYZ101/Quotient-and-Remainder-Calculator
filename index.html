@@ -1,32 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Q&R calculator</title>
+<title>Q&R Calculator</title>
 <style>
-body { background-color: orange; }
-h1 { color: red; }
+html, body {
+height: 100%;
+margin: 0;
+background-color: orange;
+font-family: Arial, sans-serif;
+font-size: 18px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.container {
+text-align: center;
+background-color: white;
+padding: 30px;
+border-radius: 12px;
+box-shadow: 0 0 15px rgba(0,0,0,0.3);
+width: 100%;
+max-width: 400px;
+box-sizing: border-box;
+}
+h1 {
+color: red;
+margin-bottom: 20px;
+}
+form {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+input {
+padding: 10px;
+font-size: 16px;
+width: 100%;
+}
+button {
+padding: 10px;
+font-size: 16px;
+background-color: red;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+#Result {
+margin-top: 15px;
+font-weight: bold;
+}
+.signature {
+margin-top: 30px;
+font-style: italic;
+}
 </style>
 <script>
 function DaR() {
 var Dividend = Number(document.getElementById("Dividend").value);
 var Divisor = Number(document.getElementById("Divisor").value);
+if (Divisor === 0) {
+document.getElementById("Result").textContent = "Divisor cannot be zero.";
+return;
+}
 var Q = Math.floor(Dividend / Divisor);
 var R = Dividend % Divisor;
-document.getElementById("Result").textContent = 
-"Quotient: " + Q + " | Remainder: " + R;
+document.getElementById("Result").textContent = "Quotient: " + Q + " | Remainder: " + R;
 }
 </script>
 </head>
 <body>
+<div class="container">
 <h1>Quotient and Remainder Calculator</h1>
 <form>
-<label for="Dividend">Dividend:</label><br>
-<input type="number" id="Dividend" name="Dividend" placeholder="Enter a number" min="1"><br>
-<label for="Divisor">Divisor:</label><br>
-<input type="number" id="Divisor" name="Divisor" placeholder="Enter a number" min="1"><br>
+<input type="number" id="Dividend" name="Dividend" placeholder="Enter Dividend" min="1">
+<input type="number" id="Divisor" name="Divisor" placeholder="Enter Divisor" min="1">
 <button type="button" onclick="DaR()">Divide</button>
 </form>
-<p id="Result"></p><br><br><br><br><br><br><br><br><br><br>
-<p>By: Sasi</p>
+<p id="Result"></p>
+<p class="signature">By: Sasi</p>
+</div>
 </body>
 </html>
