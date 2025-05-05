@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q&R calculator</title>
+<style>
+body { background-color: orange; }
+h1 { color: red; }
+</style>
+<script>
+function DaR() {
+var Dividend = Number(document.getElementById("Dividend").value);
+var Divisor = Number(document.getElementById("Divisor").value);
+var Q = Math.floor(Dividend / Divisor);
+var R = Dividend % Divisor;
+document.getElementById("Result").textContent = 
+"Quotient: " + Q + " | Remainder: " + R;
+}
+</script>
+</head>
+<body>
+<h1>Quotient and Remainder Calculator</h1>
+<form>
+<label for="Dividend">Dividend:</label><br>
+<input type="number" id="Dividend" name="Dividend" placeholder="Enter a number" min="1"><br>
+<label for="Divisor">Divisor:</label><br>
+<input type="number" id="Divisor" name="Divisor" placeholder="Enter a number" min="1"><br>
+<button type="button" onclick="DaR()">Divide</button>
+</form>
+<p id="Result"></p><br><br><br><br><br><br><br><br><br><br>
+<p>By: Sasi</p>
+</body>
+</html>
