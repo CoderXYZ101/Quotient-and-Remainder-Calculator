@@ -46,13 +46,27 @@ border: none;
 border-radius: 5px;
 cursor: pointer;
 }
-#Result {
+#Result1 {
 margin-top: 15px;
 font-weight: bold;
+}
+#Result2{
+margin-top: 15px;
+font-weight: bold;
+color:red
 }
 .signature {
 margin-top: 30px;
 font-style: italic;
+}
+#reset {
+padding: 10px;
+font-size: 16px;
+background-color: red;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
 }
 </style>
 <script>
@@ -65,19 +79,33 @@ return;
 }
 var Q = Math.floor(Dividend / Divisor);
 var R = Dividend % Divisor;
-document.getElementById("Result").textContent = "Quotient: " + Q + " | Remainder: " + R;
+document.getElementById("Result1").textContent = "Quotient: " + Q;
+document.getElementById("Result2").textContent = "Remainder: " + R;
 }
+document.addEventListener("keydown", function(event) {
+if (event.key === "Enter") {
+event.preventDefault();
+DaR();
+} else if (event.key === "r") {
+event.preventDefault();
+document.querySelector("form").reset();
+document.getElementById("Result1").textContent = "";
+document.getElementById("Result2").textContent = "";
+}
+});
 </script>
 </head>
 <body>
 <div class="container">
 <h1>Quotient and Remainder Calculator</h1>
 <form>
-<input type="number" id="Dividend" name="Dividend" placeholder="Enter Dividend" min="1">
-<input type="number" id="Divisor" name="Divisor" placeholder="Enter Divisor" min="1">
+<input type="number" id="Dividend" name="Dividend" value="" placeholder="Enter Dividend" min="1">
+<input type="number" id="Divisor" name="Divisor" value="" placeholder="Enter Divisor" min="1">
 <button type="button" onclick="DaR()">Divide</button>
+<input id="reset" type="reset">
 </form>
-<p id="Result"></p>
+<p id="Result1"></p>
+<p id="Result2"></p>
 <p class="signature">By: Sasi</p>
 </div>
 </body>
